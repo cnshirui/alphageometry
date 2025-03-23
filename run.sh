@@ -20,7 +20,8 @@ set -x
 virtualenv -p python3 .
 source ./bin/activate
 
-pip install --require-hashes -r requirements.txt
+# pip install --require-hashes -r requirements.txt
+pip install -r requirements.in
 
 gdown --folder https://bit.ly/alphageometry
 DATA=ag_ckpt_vocab
