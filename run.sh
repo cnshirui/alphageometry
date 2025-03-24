@@ -23,12 +23,18 @@ source ./bin/activate
 # pip install --require-hashes -r requirements.txt
 pip install -r requirements.in
 
-gdown --folder https://bit.ly/alphageometry
+if [ ! -d "ag_ckpt_vocab" ]; then
+  gdown --folder https://bit.ly/alphageometry
+fi
 DATA=ag_ckpt_vocab
 
 MELIAD_PATH=meliad_lib/meliad
 mkdir -p $MELIAD_PATH
-git clone https://github.com/google-research/meliad $MELIAD_PATH
+
+if [ ! -d "meliad_lib" ]; then
+  git clone https://github.com/google-research/meliad $MELIAD_PATH
+fi
+
 export PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
 
 DDAR_ARGS=(
